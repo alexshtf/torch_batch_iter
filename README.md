@@ -5,7 +5,7 @@ Utilities for iterating over mini-batches of tensors, while avoiding the overhea
 Installing:
 
 ```bash
-pip install batch_iter
+pip install batch-iter
 ```
 
 The library is based on this [blog post](https://alexshtf.github.io/2024/08/31/BatchIter.html). There you can find more explanation and motivation. Below are simple examples:
