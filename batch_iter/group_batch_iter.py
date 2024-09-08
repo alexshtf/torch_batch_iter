@@ -44,13 +44,14 @@ def fnv_hash(tensor: torch.Tensor) -> torch.Tensor:
       A PyTorch tensor of the same size and dtype as the input tensor, containing the FNV hash for each element.
     """
     # Define the FNV prime and offset basis
-    fnv_prime = torch.tensor(0x01000193, dtype=torch.uint32, device=tensor.device)
-    fnv_offset = 0x811c9dc5
+    fnv_prime = torch.tensor(0x01000193, dtype=torch.int32, device=tensor.device)
+    fnv_offset = -2128831035  # 0x811c9dc5 as a signed int32
 
     # Initialize the hash value with zeros (same size and dtype as tensor)
-    hash_value = torch.full_like(tensor, fnv_offset, dtype=torch.uint32)
+    hash_value = torch.full_like(tensor, fnv_offset, dtype=torch.int32)
     for byte in view_as_bytes(tensor):
-        hash_value = torch.bitwise_xor(hash_value * fnv_prime, byte)
+        hash_value = torch.bitwise_xor(hash_value, byte)
+        hash_value = hash_value * fnv_prime
 
     # No need to reshape, output already has the same size and dtype as input
     return hash_value
