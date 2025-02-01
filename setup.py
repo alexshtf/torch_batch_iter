@@ -16,7 +16,7 @@ setup(
     author='Alex Shtoff',
     author_email='<alex.shtf@gmail.com>',
     description=DESCRIPTION,
-    long_description=LONG_DESCRIPTION,
+    long_description=long_description,
     long_description_content_type='text/markdown',
     packages=find_packages(),
     install_requires=['torch>=2.1.0'],
