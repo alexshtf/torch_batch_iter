@@ -2,13 +2,13 @@ from setuptools import setup, find_packages
 import os
 
 
-here = os.path.abspath(os.path.dirname(__file__))
-
-VERSION = '0.1'
+VERSION = '0.1.1'
 DESCRIPTION = 'Utilities for efficiently iterating over mini-batches of PyTorch tensors'
-LONG_DESCRIPTION = ('This package allows eliminating the over-head incurred by the DataLoader class when iterating '
-                    'over in-memory tensors for training small models. Allows iterating over (shuffled) samples, '
-                    'or groups of samples, such as what is required for learning-to-rank.')
+
+# read the contents of your README file
+from pathlib import Path
+this_directory = Path(__file__).parent
+long_description = (this_directory / "README.md").read_text()
 
 setup(
     name='batch_iter',
